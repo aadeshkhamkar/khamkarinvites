@@ -79,7 +79,8 @@ export function DateReveal() {
     const y = (clientY - rect.top) * dpr;
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    ctx.arc(x, y, 26 * dpr, 0, Math.PI * 2);
+    // Use a much larger brush radius (65 instead of 26) to reveal large chunks like Google Pay
+    ctx.arc(x, y, 65 * dpr, 0, Math.PI * 2);
     ctx.fill();
   }, []);
 
@@ -94,7 +95,8 @@ export function DateReveal() {
     for (let i = 3; i < data.length; i += 40) {
       if (data[i] === 0) clear++;
     }
-    if (clear / (data.length / 40) > 0.5) setRevealed(true);
+    // Lower threshold so it fully reveals even earlier (30% instead of 50%)
+    if (clear / (data.length / 40) > 0.3) setRevealed(true);
   }, []);
 
   // Prevent default scroll on touch
@@ -145,7 +147,10 @@ export function DateReveal() {
                 ref={canvasRef}
                 style={{ touchAction: "none" }}
                 className="absolute inset-0 z-10 cursor-pointer"
-                onMouseDown={() => (drawing.current = true)}
+                onMouseDown={(e) => {
+                  drawing.current = true;
+                  scratch(e.clientX, e.clientY); // Scratch immediately on click
+                }}
                 onMouseUp={() => {
                   drawing.current = false;
                   checkProgress();
@@ -155,7 +160,11 @@ export function DateReveal() {
                   drawing.current = false;
                 }}
                 onMouseMove={(e) => drawing.current && scratch(e.clientX, e.clientY)}
-                onTouchStart={() => (drawing.current = true)}
+                onTouchStart={(e) => {
+                  drawing.current = true;
+                  const tch = e.touches[0];
+                  scratch(tch.clientX, tch.clientY); // Scratch immediately on tap
+                }}
                 onTouchEnd={() => {
                   drawing.current = false;
                   checkProgress();
