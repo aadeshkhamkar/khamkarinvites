@@ -63,10 +63,10 @@ function WeddingPage() {
     setOpened(true);
     setShowPetals(true);
     
-    // Automatically fade out / stop petals after ~4.5 seconds
+    // Wait for all petals to naturally fall off screen before unmounting (approx 18s total)
     window.setTimeout(() => {
       setShowPetals(false);
-    }, 10000);
+    }, 18000);
 
     try {
       localStorage.setItem("wedding-intro-opened", "true");
