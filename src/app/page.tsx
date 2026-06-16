@@ -37,6 +37,14 @@ function WeddingPage() {
     }
     setOpened(false);
     setShowPetals(false);
+
+    // Prevent browser from restoring scroll position on refresh
+    if (typeof window !== "undefined") {
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    }
   }, []);
 
   useEffect(() => {
@@ -75,7 +83,7 @@ function WeddingPage() {
     }
     window.setTimeout(() => {
       document.getElementById("couple")?.scrollIntoView({ behavior: "smooth" });
-    }, 3000);
+    }, 5500); // Increased from 3000ms to give more time to read Hero section
   };
 
   return (
