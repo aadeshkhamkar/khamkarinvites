@@ -143,7 +143,7 @@ export const content = {
 
     brideNames: {
       en: "Mr. Gorakh & Mrs. Aasha Khamkar and family",
-      mr: "श्री. गोरख व सौ. आशा व परिवार",
+      mr: "श्री. गोरख व सौ. आशा खामकर व परिवार",
     } as Bi,
     groomNames: {
       en: "Mr. Sahebrao and Mrs. Sindhubai Gawali and family",
