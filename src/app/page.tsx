@@ -26,6 +26,7 @@ export default function Index() {
 
 function WeddingPage() {
   const [opened, setOpened] = useState(false);
+  const [showPetals, setShowPetals] = useState(false);
 
   // Always reset intro state on fresh load so users start from the gate
   useEffect(() => {
@@ -35,6 +36,7 @@ function WeddingPage() {
       // ignore
     }
     setOpened(false);
+    setShowPetals(false);
   }, []);
 
   useEffect(() => {
@@ -59,6 +61,13 @@ function WeddingPage() {
 
   const handleOpen = () => {
     setOpened(true);
+    setShowPetals(true);
+    
+    // Automatically fade out / stop petals after ~4.5 seconds
+    window.setTimeout(() => {
+      setShowPetals(false);
+    }, 10000);
+
     try {
       localStorage.setItem("wedding-intro-opened", "true");
     } catch (e) {
@@ -75,7 +84,7 @@ function WeddingPage() {
       {opened && (
         <>
           <LanguageSwitcher />
-          <Petals />
+          {showPetals && <Petals />}
         </>
       )}
       <Hero />

@@ -1,32 +1,75 @@
+import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { useLanguage } from "@/lib/language-context";
+import gsap from "gsap";
 
 /* Falling floral petals across the page */
-export function Petals({ count = 14 }: { count?: number }) {
-  const petals = Array.from({ length: count });
-  return (
-    <div className="pointer-events-none fixed inset-0 z-20 overflow-hidden" aria-hidden>
-      {petals.map((_, i) => {
-        const left = (i * 97) % 100;
-        const delay = (i % 7) * 1.6;
-        const dur = 11 + (i % 5) * 2.5;
-        const size = 10 + (i % 4) * 5;
-        return (
-          <span
-            key={i}
-            // eslint-disable-next-line react/forbid-dom-props
-            style={{
-              left: `${left}%`,
-              width: `${size}px`,
-              height: `${size}px`,
-              animation: `petal-fall ${dur}s linear ${delay}s infinite`,
-            }}
-            className="absolute top-0 rounded-[60%_40%_60%_40%] bg-gradient-gold opacity-70"
-          />
-        );
-      })}
-    </div>
-  );
+export function Petals({ count = 30 }: { count?: number }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    // Fade in over 1s, then fade out after 3.5s so it's gone at 4.5s
+    gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 1 });
+    gsap.to(container, { opacity: 0, duration: 1, delay: 9.5 });
+
+    gsap.set(container, { perspective: 600 });
+
+    const R = (min: number, max: number) => min + Math.random() * (max - min);
+
+    const dots: HTMLDivElement[] = [];
+    for (let i = 0; i < count; i++) {
+      const div = document.createElement("div");
+      div.style.position = "absolute";
+      div.style.width = "35px";
+      div.style.height = "35px";
+      div.style.backgroundImage = "url(https://image.ibb.co/kyUHab/rose.png)";
+      div.style.backgroundSize = "100% 100%";
+      
+      gsap.set(div, { x: R(0, w), y: R(-200, -150), z: R(-200, 200) });
+      container.appendChild(div);
+      dots.push(div);
+
+      gsap.to(div, {
+        y: h + 100,
+        ease: "none",
+        repeat: -1,
+        delay: R(0, 2), // Let them start falling from top randomly instead of popping in instantly
+        duration: R(6, 15)
+      });
+      gsap.to(div, {
+        x: "+=100",
+        rotationZ: R(0, 180),
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        duration: R(4, 8)
+      });
+      gsap.to(div, {
+        rotationX: R(0, 360),
+        rotationY: R(0, 360),
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: -5,
+        duration: R(2, 8)
+      });
+    }
+
+    return () => {
+      gsap.killTweensOf(container);
+      dots.forEach(dot => {
+        gsap.killTweensOf(dot);
+        dot.remove();
+      });
+    };
+  }, [count]);
+
+  return <div ref={containerRef} className="pointer-events-none fixed inset-0 z-20 overflow-hidden" aria-hidden />;
 }
 
 /* Ornamental gold divider with a central diamond */
