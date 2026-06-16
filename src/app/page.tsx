@@ -81,9 +81,6 @@ function WeddingPage() {
     } catch (e) {
       // ignore
     }
-    window.setTimeout(() => {
-      document.getElementById("couple")?.scrollIntoView({ behavior: "smooth" });
-    }, 5500); // Increased from 3000ms to give more time to read Hero section
   };
 
   return (

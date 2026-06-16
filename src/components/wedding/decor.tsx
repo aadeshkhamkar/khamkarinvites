@@ -21,9 +21,11 @@ export function Petals({ count = 30 }: { count?: number }) {
     const R = (min: number, max: number) => min + Math.random() * (max - min);
 
     const dots: HTMLDivElement[] = [];
-    const yTweens: gsap.core.Tween[] = [];
 
-    for (let i = 0; i < count; i++) {
+    // Increase count internally to compensate for not looping
+    const totalPetals = count * 2; 
+
+    for (let i = 0; i < totalPetals; i++) {
       const div = document.createElement("div");
       div.style.position = "absolute";
       div.style.width = "35px";
@@ -35,14 +37,13 @@ export function Petals({ count = 30 }: { count?: number }) {
       container.appendChild(div);
       dots.push(div);
 
-      const yTween = gsap.to(div, {
+      gsap.to(div, {
         y: h + 100,
         ease: "none",
-        repeat: -1,
-        delay: R(0, 2),
-        duration: R(6, 12) // Slightly faster max duration so they don't linger forever
+        // NO REPEAT: Just fall perfectly once!
+        delay: R(0, 4.5), // Distribute the start times over 4.5 seconds for a continuous shower effect
+        duration: R(6, 12)
       });
-      yTweens.push(yTween);
 
       gsap.to(div, {
         x: "+=100",
@@ -63,13 +64,7 @@ export function Petals({ count = 30 }: { count?: number }) {
       });
     }
 
-    // Stop them from looping back to the top after 3.5 seconds
-    const stopTimer = setTimeout(() => {
-      yTweens.forEach(t => t.repeat(0));
-    }, 3500);
-
     return () => {
-      clearTimeout(stopTimer);
       gsap.killTweensOf(container);
       dots.forEach(dot => {
         gsap.killTweensOf(dot);

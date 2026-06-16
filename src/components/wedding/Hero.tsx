@@ -79,17 +79,19 @@ export function Hero() {
           {t(content.invite)}
         </motion.p>
 
-        <motion.div
-          className="mt-4 flex flex-col items-center text-gold-deep md:mt-6"
+        <motion.button
+          onClick={() => document.getElementById("couple")?.scrollIntoView({ behavior: "smooth" })}
+          className="mt-4 flex cursor-pointer flex-col items-center text-gold-deep transition-colors hover:text-gold md:mt-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3, duration: 1 }}
+          aria-label="Scroll to next section"
         >
           <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
           <motion.span animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
             <ChevronDown className="h-4 w-4" />
           </motion.span>
-        </motion.div>
+        </motion.button>
       </div>
     </section>
   );
