@@ -50,7 +50,7 @@ export function IntroGate({ open, onOpen }: { open: boolean; onOpen: () => void 
             </motion.span>
 
             <motion.img
-              src={ganpati}
+              src={ganpati.src}
               alt="Lord Ganpati"
               width={1024}
               height={1024}
@@ -76,13 +76,13 @@ export function IntroGate({ open, onOpen }: { open: boolean; onOpen: () => void 
               transition={{ delay: 0.85, duration: 0.9 }}
             >
               <span className="font-script text-5xl text-gold-light sm:text-6xl">
-                {t(content.groom)}
+                {t(content.bride)}
               </span>
               <span className="my-1 block font-script text-3xl text-gold sm:text-4xl">
                 {t(content.and)}
               </span>
               <span className="font-script text-5xl text-gold-light sm:text-6xl">
-                {t(content.bride)}
+                {t(content.groom)}
               </span>
             </motion.h1>
 

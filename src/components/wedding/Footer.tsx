@@ -7,9 +7,9 @@ export function Footer() {
   const { t } = useLanguage();
   const f = content.footer;
   return (
-    <footer className="relative overflow-hidden bg-gradient-maroon px-6 py-20 text-center text-ivory">
+    <footer className="relative overflow-hidden bg-gradient-maroon px-6 py-8 text-center text-ivory">
       <img
-        src={ganpati}
+        src={ganpati.src}
         alt=""
         aria-hidden
         width={1024}
@@ -24,8 +24,8 @@ export function Footer() {
       <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-ivory/80">{t(f.thanks)}</p>
       <div className="mt-8 flex flex-col items-center justify-center gap-3 text-sm text-ivory/80 sm:flex-row sm:gap-4">
         <span className="flex items-center gap-2">
-          <span aria-hidden className="inline-block h-4 w-4 rounded-full bg-gold-light" />
-          © Aadesh Khamkar 2026
+          <span aria-hidden className="inline-block h-4 w-4 rounded-full bg-gold-light" />© Aadesh
+          Khamkar 2026
         </span>
         <a
           href="https://aadeshkhamkar.vercel.app/"
@@ -33,7 +33,10 @@ export function Footer() {
           rel="noreferrer"
           className="inline-flex items-center gap-2 text-gold-light transition-colors duration-200 hover:text-ivory"
         >
-          <span aria-hidden className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-ivory/10 text-gold-light">
+          <span
+            aria-hidden
+            className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-ivory/10 text-gold-light"
+          >
             P
           </span>
           Portfolio Website

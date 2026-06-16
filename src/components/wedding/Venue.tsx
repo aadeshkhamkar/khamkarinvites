@@ -13,7 +13,7 @@ export function Venue() {
       <Reveal className="mx-auto max-w-4xl overflow-hidden rounded-[1.8rem] border border-gold/40 bg-card shadow-card">
         <div className="grid md:grid-cols-2">
           <img
-            src={venueImg}
+            src={venueImg.src}
             alt="The wedding venue"
             width={1280}
             height={896}

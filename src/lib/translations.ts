@@ -58,11 +58,11 @@ export const content = {
 
   story: {
     title: { en: "Invitation from Khamkar Family", mr: "खामकर कुटुंबीयांकडून निमंत्रण" } as Bi,
-    subtitle: { 
-      en: "With love and blessings", 
-      mr: "स्नेह आणि आशीर्वादाने"
+    subtitle: {
+      en: "With love and blessings",
+      mr: "स्नेह आणि आशीर्वादाने",
     } as Bi,
-    
+
     items: [
       {
         title: { en: "Bride's Family Invitation", mr: "वधूचे कुटुंब निमंत्रण" },
@@ -79,7 +79,10 @@ export const content = {
 
   reveal: {
     title: { en: "Save The Date", mr: "मुहूर्त" } as Bi,
-    instruction: { en: "Scratch the golden seal to reveal", mr: "मुहूर्त पाहण्यासाठी सोनेरी आवरण खरवडा" } as Bi,
+    instruction: {
+      en: "Scratch the golden seal to reveal",
+      mr: "मुहूर्त पाहण्यासाठी सोनेरी आवरण खरवडा",
+    } as Bi,
     dateLabel: { en: "Wedding Date", mr: "विवाह दिनांक" } as Bi,
     date: { en: "Thursday, 9th July 2026", mr: "गुरूवार, ९ जुलै २०२६" } as Bi,
     muhuratLabel: { en: "Shubh Muhurat", mr: "शुभ मुहूर्त" } as Bi,
@@ -93,7 +96,10 @@ export const content = {
 
   events: {
     title: { en: "Wedding Events", mr: "विवाह कार्यक्रम" } as Bi,
-    subtitle: { en: "Celebrate every ceremony with us", mr: "प्रत्येक विधीत आमच्यासोबत आनंद साजरा करा" } as Bi,
+    subtitle: {
+      en: "Celebrate every ceremony with us",
+      mr: "प्रत्येक विधीत आमच्यासोबत आनंद साजरा करा",
+    } as Bi,
     items: [
       {
         name: { en: "Haldi ", mr: "हळद" },
@@ -105,7 +111,10 @@ export const content = {
         name: { en: "Wedding Ceremony", mr: "विवाह सोहळा" },
         date: { en: "9 Jul 2026", mr: "९ जुलै २०२६" },
         time: { en: "12:15 PM", mr: "दुपारी १२:१५" },
-        venue: { en: "Shivalay Mangal Karyalay, Pimpri Kolandar, Shrigonda, Ahilyanagar", mr: "शिवालय मंगल कार्यालय, पिंपरी कोलंदर, श्रीगोंदा, अहिल्यानगर" },
+        venue: {
+          en: "Shivalay Mangal Karyalay, Pimpri Kolandar, Shrigonda, Ahilyanagar",
+          mr: "शिवालय मंगल कार्यालय, पिंपरी कोलंदर, श्रीगोंदा, अहिल्यानगर",
+        },
       },
     ] as EventItem[],
   },
@@ -131,7 +140,7 @@ export const content = {
     subtitle: { en: "From the families", mr: "उभय कुटुंबीयांकडून" } as Bi,
     brideFamily: { en: "Khamkar Family", mr: "खामकर परिवार" } as Bi,
     groomFamily: { en: "Gawali Family", mr: "गवळी परिवार" } as Bi,
-    
+
     brideNames: {
       en: "Mr. Gorakh & Mrs. Aasha Khamkar and family",
       mr: "श्री. गोरख व सौ. आशा व परिवार",
@@ -140,7 +149,7 @@ export const content = {
       en: "Mr. Sahebrao and Mrs. Sindhubai Gawali and family",
       mr: "श्री. साहेबराव व सौ. सिंधुबाई गवळी व परिवार",
     } as Bi,
-     brideMsg: {
+    brideMsg: {
       en: "Your love and blessings will make this celebration truly complete. We await you warmly.",
       mr: "आपल्या स्नेह व आशीर्वादाने हा सोहळा परिपूर्ण होईल. आपल्या स्वागतास आम्ही आतुर आहोत.",
     } as Bi,
@@ -148,7 +157,6 @@ export const content = {
       en: "It is our heartfelt pleasure to invite you to grace this joyous occasion with your presence and blessings.",
       mr: "या आनंदसोहळ्यास आपण सहकुटुंब उपस्थित राहून आशीर्वाद द्यावेत ही नम्र विनंती.",
     } as Bi,
-   
   },
 
   // rsvp: {

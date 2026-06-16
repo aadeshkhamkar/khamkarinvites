@@ -11,6 +11,7 @@ A luxury digital wedding invitation site for Aarti Khamkar & Akshay Gawali — b
 ---
 
 ## Table of Contents
+
 - [Preview](#preview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -22,9 +23,11 @@ A luxury digital wedding invitation site for Aarti Khamkar & Akshay Gawali — b
 ---
 
 ## Preview
+
 Open `src/routes/index.tsx` and run the dev server to view the invitation locally. The site includes an intro gate, invitation card, event details, gallery, and family invites.
 
 ## Features
+
 - Language support: English (en) and Marathi (mr)
 - Animated intro gate and invitation card (Framer Motion)
 - Responsive, accessible layouts using Tailwind CSS
@@ -32,6 +35,7 @@ Open `src/routes/index.tsx` and run the dev server to view the invitation locall
 - Clean, content-driven translations in `src/lib/translations.ts`
 
 ## Tech Stack
+
 - ⚡ Vite
 - ⚛️ React + TypeScript
 - 🎨 Tailwind CSS
@@ -39,6 +43,7 @@ Open `src/routes/index.tsx` and run the dev server to view the invitation locall
 - 🔉 Lucide icons
 
 ## Local Setup
+
 1. Install dependencies
 
 ```bash
@@ -68,16 +73,19 @@ npm run preview
 ```
 
 ## Project Structure (short)
+
 - `src/components/` — UI and wedding sections (Hero, IntroGate, Story, Gallery, Couple, etc.)
 - `src/assets/` — images used in the site (invitations, gallery)
 - `src/lib/translations.ts` — central translation/content file
 - `src/routes/index.tsx` — main page assembly and intro gate logic
 
 ## Permissions & Use
+
 - DO NOT reuse, copy, or publish any images, personal information, or content from this project without explicit permission from the owners.
 - This project contains personal assets for the Khamkar and Gawali families; treat them as private unless you have written consent.
 
 ## Contact
+
 If you need edits, images, or permission to reuse assets, contact:
 
 - Aadesh Khamkar — aadeshbkhamkar@gmail.com

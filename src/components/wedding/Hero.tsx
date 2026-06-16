@@ -14,8 +14,14 @@ export function Hero() {
     >
       <CornerFlourish position="tl" className="absolute left-4 top-4 h-24 w-24 sm:h-32 sm:w-32" />
       <CornerFlourish position="tr" className="absolute right-4 top-4 h-24 w-24 sm:h-32 sm:w-32" />
-      <CornerFlourish position="bl" className="absolute bottom-4 left-4 h-24 w-24 sm:h-32 sm:w-32" />
-      <CornerFlourish position="br" className="absolute bottom-4 right-4 h-24 w-24 sm:h-32 sm:w-32" />
+      <CornerFlourish
+        position="bl"
+        className="absolute bottom-4 left-4 h-24 w-24 sm:h-32 sm:w-32"
+      />
+      <CornerFlourish
+        position="br"
+        className="absolute bottom-4 right-4 h-24 w-24 sm:h-32 sm:w-32"
+      />
 
       <div className="relative z-10 flex flex-col items-center text-center">
         <motion.span
@@ -28,7 +34,7 @@ export function Hero() {
         </motion.span>
 
         <motion.img
-          src={ganpati}
+          src={ganpati.src}
           alt="Decorative Lord Ganpati artwork"
           width={1024}
           height={1024}
@@ -54,11 +60,11 @@ export function Hero() {
           className="mt-3"
         >
           <span className="block font-script text-6xl leading-tight text-maroon sm:text-8xl">
-            {t(content.groom)}
+            {t(content.bride)}
           </span>
           <span className="my-1 block text-2xl text-gold-deep sm:text-3xl">{t(content.and)}</span>
           <span className="block font-script text-6xl leading-tight text-maroon sm:text-8xl">
-            {t(content.bride)}
+            {t(content.groom)}
           </span>
         </motion.div>
 
@@ -80,10 +86,7 @@ export function Hero() {
           transition={{ delay: 1.3, duration: 1 }}
         >
           <span className="text-xs uppercase tracking-[0.3em]">Scroll</span>
-          <motion.span
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8 }}
-          >
+          <motion.span animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
             <ChevronDown className="h-5 w-5" />
           </motion.span>
         </motion.div>

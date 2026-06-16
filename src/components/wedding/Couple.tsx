@@ -4,6 +4,7 @@ import { content } from "@/lib/translations";
 import bride from "@/assets/bride.jpg";
 import groom from "@/assets/groom.jpg";
 import { SectionHeading, Reveal } from "./decor";
+import Image, { StaticImageData } from "next/image";
 
 function Person({
   img,
@@ -13,7 +14,7 @@ function Person({
   desc,
   delay,
 }: {
-  img: string;
+  img: string | StaticImageData;
   alt: string;
   role: string;
   name: string;
@@ -24,14 +25,13 @@ function Person({
     <Reveal delay={delay} className="group flex flex-col items-center text-center">
       <div className="relative">
         <div className="absolute -inset-3 rounded-[2rem] border border-gold/40" />
-        <div className="overflow-hidden rounded-[1.6rem] shadow-card">
-          <img
+        <div className="overflow-hidden rounded-[1.6rem] shadow-card relative h-[26rem] w-72 sm:h-[30rem] sm:w-80">
+          <Image
             src={img}
             alt={alt}
-            width={896}
-            height={1152}
-            loading="lazy"
-            className="h-[26rem] w-72 object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[30rem] sm:w-80"
+            fill
+            sizes="(max-width: 640px) 288px, 320px"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
         </div>
       </div>

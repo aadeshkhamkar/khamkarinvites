@@ -1,22 +1,7 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -126,7 +111,12 @@
   --font-body: "Jost", system-ui, sans-serif;
   --font-marathi: "Tiro Devanagari Marathi", "Cormorant Garamond", serif;
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.08 86), oklch(0.7 0.14 76), oklch(0.6 0.13 68));
+  --gradient-gold: linear-gradient(
+    135deg,
+    oklch(0.86 0.08 86),
+    oklch(0.7 0.14 76),
+    oklch(0.6 0.13 68)
+  );
   --gradient-maroon: linear-gradient(160deg, oklch(0.42 0.14 26), oklch(0.3 0.12 26));
   --gradient-ivory: linear-gradient(180deg, oklch(0.985 0.012 86), oklch(0.94 0.024 82));
   --shadow-card: 0 24px 60px -28px oklch(0.39 0.14 24 / 0.35);
@@ -198,7 +188,10 @@
     scroll-behavior: smooth;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
   }
 
@@ -254,25 +247,47 @@
 /* Decorative paper texture for cards */
 @utility card-paper {
   background-color: var(--card);
-  background-image:
-    radial-gradient(circle at 1px 1px, oklch(0.74 0.13 78 / 0.07) 1px, transparent 0);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    oklch(0.74 0.13 78 / 0.07) 1px,
+    transparent 0
+  );
   background-size: 22px 22px;
 }
 
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-18px) rotate(6deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(6deg);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes petal-fall {
-  0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.9; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
-.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}

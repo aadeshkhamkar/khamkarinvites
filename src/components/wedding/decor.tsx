@@ -35,10 +35,7 @@ export function GoldDivider({ className = "" }: { className?: string }) {
     <div className={`flex items-center justify-center gap-3 ${className}`} aria-hidden>
       <span className="gold-divider w-20 sm:w-28" />
       <svg width="26" height="26" viewBox="0 0 24 24" className="text-gold">
-        <path
-          d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"
-          fill="currentColor"
-        />
+        <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z" fill="currentColor" />
       </svg>
       <span className="gold-divider w-20 sm:w-28" />
     </div>
@@ -55,11 +52,7 @@ export function CornerFlourish({
 }) {
   const rot = { tl: "", tr: "scale-x-[-1]", bl: "scale-y-[-1]", br: "scale-[-1]" }[position];
   return (
-    <svg
-      viewBox="0 0 100 100"
-      className={`text-gold/50 ${rot} ${className}`}
-      aria-hidden
-    >
+    <svg viewBox="0 0 100 100" className={`text-gold/50 ${rot} ${className}`} aria-hidden>
       <path
         d="M4 4c30 0 54 8 70 28 8 10 12 24 12 44M4 4c0 24 4 40 14 52 12 14 30 22 56 26M4 4c14 2 26 8 34 18"
         fill="none"

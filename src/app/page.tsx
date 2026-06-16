@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
 import { useEffect, useState } from "react";
 import { LanguageProvider } from "@/lib/language-context";
 import { IntroGate } from "@/components/wedding/IntroGate";
@@ -15,29 +16,7 @@ import { Footer } from "@/components/wedding/Footer";
 import { LanguageSwitcher } from "@/components/wedding/LanguageSwitcher";
 import { Petals } from "@/components/wedding/decor";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Wedding Invitation | Gawali Family" },
-      {
-        name: "description",
-        content:
-          "You are warmly invited to the wedding celebration of Aarti & Akshay. Join the Gawali family on 9th July 2026 in Pimpri Kolandar, Shrigonda, Ahilyanagar for the wedding ceremony and haldi.",
-      },
-      { property: "og:title", content: "Aarti & Akshay — Wedding Invitation" },
-      {
-        property: "og:description",
-        content:
-          "A luxury digital wedding invitation from the Gawali family. 9th July 2026, Pimpri Kolandar, Shrigonda, Ahilyanagar.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Index,
-});
-
-function Index() {
+export default function Index() {
   return (
     <LanguageProvider>
       <WeddingPage />

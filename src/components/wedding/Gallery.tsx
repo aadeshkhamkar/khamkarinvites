@@ -13,9 +13,11 @@ import groom from "@/assets/groom.jpg";
 
 const images = [g2, g1, g3, g4, bride, groom];
 
+import { StaticImageData } from "next/image";
+
 export function Gallery() {
   const { t } = useLanguage();
-  const [active, setActive] = useState<string | null>(null);
+  const [active, setActive] = useState<StaticImageData | null>(null);
 
   useEffect(() => {
     if (active) {
@@ -52,7 +54,7 @@ export function Gallery() {
           className="group block w-full overflow-hidden rounded-3xl shadow-2xl"
         >
           <img
-            src={images[0]}
+            src={images[0].src}
             alt="Main pre-wedding moment"
             loading="lazy"
             className="h-96 w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -72,7 +74,7 @@ export function Gallery() {
               className="group relative aspect-square overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl"
             >
               <img
-                src={img}
+                src={img.src}
                 alt={`Pre-wedding detail ${i + 2}`}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -100,7 +102,7 @@ export function Gallery() {
               <X className="h-5 w-5" />
             </button>
             <motion.img
-              src={active}
+              src={active.src}
               alt="Enlarged pre-wedding photograph"
               className="max-h-[85vh] max-w-full rounded-2xl border-2 border-gold/40 object-contain shadow-gold"
               initial={{ scale: 0.85, opacity: 0 }}

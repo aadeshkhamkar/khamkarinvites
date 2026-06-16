@@ -14,7 +14,10 @@ function FamilyCard({
   delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="relative rounded-2xl border border-gold/40 bg-card p-8 text-center shadow-card">
+    <Reveal
+      delay={delay}
+      className="relative rounded-2xl border border-gold/40 bg-card p-8 text-center shadow-card"
+    >
       <span className="font-script text-4xl text-gold-deep">{family}</span>
       <GoldDivider className="my-4" />
       <p className="text-sm leading-relaxed text-foreground/75">{msg}</p>

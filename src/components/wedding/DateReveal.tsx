@@ -35,7 +35,13 @@ export function DateReveal() {
     ctx.fillStyle = "rgba(255,255,255,0.18)";
     for (let i = 0; i < 60; i++) {
       ctx.beginPath();
-      ctx.arc(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2, 0, Math.PI * 2);
+      ctx.arc(
+        Math.random() * rect.width,
+        Math.random() * rect.height,
+        Math.random() * 2,
+        0,
+        Math.PI * 2,
+      );
       ctx.fill();
     }
     ctx.fillStyle = "rgba(74,30,24,0.55)";
@@ -105,7 +111,9 @@ export function DateReveal() {
               <Clock className="h-5 w-5 text-gold-deep" />
               {t(r.muhurat)}
             </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-foreground/70">{t(r.message)}</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-foreground/70">
+              {t(r.message)}
+            </p>
 
             {/* scratch canvas */}
             {!revealed && (
