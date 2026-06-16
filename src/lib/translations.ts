@@ -69,7 +69,7 @@ export const content = {
         date: { en: "", mr: "" },
         text: {
           en: "Khamkar Family invite you and your family to the wedding ceremony of our beloved Aarti and Akshay.\n\nMay all your blessings and affection make this day even more special.",
-          mr: "खामकर परिवार आपणास सहकुटुंब आमच्या लाड्या आरती व अक्षय यांच्या विवाह सोहळ्यास आमंत्रित करतात.\n\nआपणा सर्वांचे आशीर्वाद व स्नेह या दिवसाला अधिक विशेष करून देईल.",
+          mr: "खामकर परिवार आपणास सहकुटुंब आमच्या लाडक्या आरती व अक्षय यांच्या विवाह सोहळ्यास आमंत्रित करतात.\n\nआपणा सर्वांचे आशीर्वाद व स्नेह या दिवसाला अधिक विशेष करून देईल.",
         },
         image1: "invite-1.jpeg",
         image2: "invite-2.jpeg",

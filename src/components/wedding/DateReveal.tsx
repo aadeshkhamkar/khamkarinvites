@@ -13,11 +13,21 @@ export function DateReveal() {
   const [revealed, setRevealed] = useState(false);
   const drawing = useRef(false);
 
+  const lastSize = useRef({ w: 0, h: 0 });
+
   const paintCover = useCallback(() => {
     const canvas = canvasRef.current;
     const wrap = wrapRef.current;
     if (!canvas || !wrap) return;
     const rect = wrap.getBoundingClientRect();
+    
+    // Ignore resize events that don't change the element's actual size
+    // This prevents mobile scroll (which shows/hides address bar) from resetting the canvas
+    if (lastSize.current.w === rect.width && lastSize.current.h === rect.height) {
+      return;
+    }
+    lastSize.current = { w: rect.width, h: rect.height };
+
     const dpr = window.devicePixelRatio || 1;
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
@@ -58,7 +68,7 @@ export function DateReveal() {
     return () => window.removeEventListener("resize", onResize);
   }, [paintCover, revealed, lang]);
 
-  const scratch = (clientX: number, clientY: number) => {
+  const scratch = useCallback((clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -71,9 +81,9 @@ export function DateReveal() {
     ctx.beginPath();
     ctx.arc(x, y, 26 * dpr, 0, Math.PI * 2);
     ctx.fill();
-  };
+  }, []);
 
-  const checkProgress = () => {
+  const checkProgress = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -85,7 +95,21 @@ export function DateReveal() {
       if (data[i] === 0) clear++;
     }
     if (clear / (data.length / 40) > 0.5) setRevealed(true);
-  };
+  }, []);
+
+  // Prevent default scroll on touch
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || revealed) return;
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      if (!drawing.current) return;
+      const tch = e.touches[0];
+      scratch(tch.clientX, tch.clientY);
+    };
+    canvas.addEventListener("touchmove", handleTouchMove, { passive: false });
+    return () => canvas.removeEventListener("touchmove", handleTouchMove);
+  }, [revealed, scratch]);
 
   return (
     <section id="date" className="relative bg-secondary/40 px-6 py-24">
@@ -119,7 +143,8 @@ export function DateReveal() {
             {!revealed && (
               <canvas
                 ref={canvasRef}
-                className="absolute inset-0 z-10 cursor-pointer touch-none"
+                style={{ touchAction: "none" }}
+                className="absolute inset-0 z-10 cursor-pointer"
                 onMouseDown={() => (drawing.current = true)}
                 onMouseUp={() => {
                   drawing.current = false;
@@ -134,10 +159,6 @@ export function DateReveal() {
                 onTouchEnd={() => {
                   drawing.current = false;
                   checkProgress();
-                }}
-                onTouchMove={(e) => {
-                  const tch = e.touches[0];
-                  scratch(tch.clientX, tch.clientY);
                 }}
               />
             )}
